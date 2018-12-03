@@ -1,0 +1,20 @@
+/* home_page_style.css
+ * Style sheet for the initial home page
+ */
+
+#homeButton1 { /* Scavenger hunt button */
+    text-align: center;
+    background-color: lightgreen;
+    margin: auto;
+    border: 2px solid black;
+}
+#homeButton2 { /* Independent tree tour button */
+    text-align: center;
+    background-color: lightgreen;
+    margin: auto;
+    border: 2px solid black;
+}
+a.mapLink { /* Hyperlink to map page */
+    text-decoration: none;
+    color: black;
+}
