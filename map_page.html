@@ -5,8 +5,8 @@ NOTE: this code is based on the ArcGIS DevLabs code which can be found here: htt
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>ArcGIS DevLabs: Track your location</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Welcome to the Nantucket Tree Adventure!</title>
     <style>
         html, body, #viewDiv {
             padding: 0;
@@ -15,8 +15,8 @@ NOTE: this code is based on the ArcGIS DevLabs code which can be found here: htt
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.10/esri/css/main.css">
-    <script src="https://jsdev.arcgis.com/4.10/"></script>
+    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.10/esri/css/main.css"> <!--stylesheet for ArcGIS map-->
+    <script src="https://jsdev.arcgis.com/4.10/"></script> <!-- JavaScript file for ArcGIS map-->
 
     <script>
         require([
@@ -40,11 +40,8 @@ NOTE: this code is based on the ArcGIS DevLabs code which can be found here: htt
             var locate = new Locate({
                 view: view,
                 useHeadingEnabled: false,
-                // goToOverride: function(view, options) {
-                //   options.target.scale = 1500;
-                //   return view.goTo(options.target);
-                // }
             });
+
             view.ui.add(locate, "top-left");
 
             var track = new Track({
@@ -61,19 +58,10 @@ NOTE: this code is based on the ArcGIS DevLabs code which can be found here: htt
                     }
                 }),
                 useHeadingEnabled: false,
-                goToLocationEnabed: false,
-                goToOverride: function(view, options) {
-                    options.target.scale = null;
-                    return view.goTo(options);
-                }
+                goToLocationEnabled: false
             });
+
             view.ui.add(track, "top-left");
-
-            view.when(function() {
-                // track.start();
-                // view.zoom = 12;
-            });
-
         });
     </script>
 </head>
