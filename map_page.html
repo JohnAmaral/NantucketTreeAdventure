@@ -40,6 +40,51 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
                 container: "viewDiv"
             });
 
+            view.when(disableZooming);
+
+            function disableZooming(view) {
+                view.popup.dockEnabled = true;
+
+                // Remove zooming feature from popup
+                view.popup.actions = [];
+
+                // Stop zooming event from mouse-wheel or on mobile
+                function stopEvent (event) {
+                    event.stopPropagation();
+                }
+
+                // Hide zoom buttons from user
+                view.ui.components = ["attribution"];
+
+                // Disable mouse wheel zooming
+                view.on("mouse-wheel", stopEvent);
+
+                // Disable double click/tap zooming
+                view.on("double-click", stopEvent);
+
+                // Disable zooming with double click and Control
+                view.on("double-click", ["Control"], stopEvent);
+
+                // Disable pinch zooming on mobile
+                view.on("drag", stopEvent);
+
+                // Disable pinch zoom and Shift and Control
+
+                view.on("drag", ["Shift"], stopEvent);
+                view.on("drag", ["Shift", "Control"], stopEvent);
+
+                // Disable zooming with + and - keys
+                view.on("key-down", function(event) {
+                    var prohibitedKeys = ["+", "-", "Shift", "_", "="];
+                    var keyPressed = event.key;
+                    if (prohibitedKeys.indexOf(keyPressed) !== -1) {
+                        event.stopPropagation();
+                    }
+                });
+
+                return view;
+            }
+
             // Create an instance of the Track widget, but hide for user view (no need to stop tracking)
             var track = new Track({
                 view: view
