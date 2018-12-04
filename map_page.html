@@ -6,7 +6,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>Welcome to the Nantucket Tree Adventure!</title>
     //test comment
     <style>
@@ -18,7 +18,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             height: 90%;
         }
 
-        #topBar {
+        .topBar {
             background-color: lightgreen;
             margin: auto;
             width: 100%;
@@ -37,6 +37,28 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             height: 100%;
             margin: auto;
         }
+
+        /* Style for hamburger menu */
+        #hamburgIcon {
+            width: auto;
+            height: 100%;
+            margin: auto;
+            float: right;
+        }
+
+        /* Menu options (set invisible by default */
+        .topBar #menuOptions {
+            display: none;
+        }
+
+        /* For each link in top bar */
+        /*.topBar a {
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+        }*/
     </style>
     <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css"> <!-- stylesheet for ArcGIS map -->
     <script src="https://js.arcgis.com/4.9/"></script> <!-- script for ArcGIS map -->
@@ -114,13 +136,36 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
                 track.start();
             });
         });
+
+        //When user clicks on hamburger menu icon, toggle between
+        //showing and hiding menu options
+        function openMenu() {
+            var menu = document.getElementById("menuOptions");
+            if(menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
     </script>
 </head>
 
 <body>
-<div id="topBar">
-    <a href="index.html">
-        <img id="leftArrow", src="images/left_arrow.png", alt="Back to Home Page">
+<div class="topBar">
+    <a href="index.html" class="active">
+        <img id="leftArrow" src="images/left_arrow.png" alt="Back to Home Page">
+    </a>
+    <!-- Menu options (hidden by default) -->
+    <div id="menuOptions">
+        <a href="">Progress</a>
+        <a href="">Tree ID</a>
+        <a href="">Settings</a>
+        <a href="">Help</a>
+    </div>
+    <!-- Hamburger menu icon -->
+    <a href="javascript:void(0);" onclick="openMenu()">
+        <img id="hamburgIcon" src="images/hamburger_icon.png" alt="Menu">
     </a>
 </div> <!-- bar on top of screen -->
 <div id="viewDiv"></div> <!-- map -->
