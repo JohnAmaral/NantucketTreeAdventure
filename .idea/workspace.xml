@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc18b7e9-0209-4f0e-b085-17832dbf3857" name="Default Changelist" comment="" />
+    <list default="true" id="bc18b7e9-0209-4f0e-b085-17832dbf3857" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/map_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/map_page.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -138,11 +140,6 @@
               <item name="NantucketTreeAdventure" type="b2602c69:ProjectViewProjectNode" />
               <item name="NantucketTreeAdventure" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="NantucketTreeAdventure" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NantucketTreeAdventure" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -177,6 +174,16 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="map_page.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/NantucketTreeAdventure/map_page.html">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.map_page.html" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -192,7 +199,7 @@
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
+  <component name="TimeTrackingManager"
     <option name="totallyTimeSpent" value="25287000" />
   </component>
   <component name="ToolWindowManager">
@@ -203,7 +210,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.3299539" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -221,9 +228,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test/test.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -233,7 +237,7 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
+          <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" /
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
