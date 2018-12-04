@@ -27,7 +27,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         .bottomBar {
             background-color: lightgreen;
             width: 100%;
-            height: 20%;
+            height: 15%;
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
@@ -100,9 +100,9 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         /* For each link in side bar */
         .sideNav .menuButton {
             color: white;
-            padding: 50px 8px 50px 35px;
+            padding: 30px 8px 50px 35px;
             text-decoration: none;
-            font-size: 30px;
+            font-size: 40px;
             display: block;
             transition: 0.3s;
         }
@@ -116,6 +116,20 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             text-decoration: none;
             color: white;
             transition: 0.3s;
+        }
+
+        /* Points bar underneath map */
+        .pointsBar {
+            width: 100%;
+            height: 5%;
+            border: 1px black solid;
+        }
+
+        /* Each point in points bar */
+        .points {
+            height: 100%;
+            border: 1px black solid;
+            display: inline-block;
         }
 
     </style>
@@ -231,6 +245,19 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
     <a href="" class="menuButton">Help</a>
 </div>
 <div id="viewDiv"></div> <!-- map -->
+<!-- Points bar underneath map -->
+<div class="pointsBar">
+    <div class="points" id="point1" style="width:10%"></div>
+    <div class="points" id="point2" style="width:9%"></div>
+    <div class="points" id="point3" style="width:10%"></div>
+    <div class="points" id="point4" style="width:9%"></div>
+    <div class="points" id="point5" style="width:10%"></div>
+    <div class="points" id="point6" style="width:9%"></div>
+    <div class="points" id="point7" style="width:10%"></div>
+    <div class="points" id="point8" style="width:10%"></div>
+    <div class="points" id="point9" style="width:9%"></div>
+    <div class="points" id="point10" style="width:10%"></div>
+</div>
 <div class="bottomBar">
     <img id="questIcon" src="images/quest_icon.png" alt="Quest Icon">
     <img id="answerIcon" src="images/answer_icon.png" alt="Answer Icon">
