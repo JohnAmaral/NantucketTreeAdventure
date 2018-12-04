@@ -61,12 +61,23 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         }
 
         /* For each link in side bar */
-        .sideNav a {
+        .sideNav .menuButton {
             color: white;
-            padding: 8px 8px 8px 32px;
+            padding: 50px 8px 50px 35px;
             text-decoration: none;
-            font-size: 17px;
+            font-size: 40px;
             display: block;
+            transition: 0.3s;
+        }
+
+        /* Close button for side menu */
+        .sideNav .closeButton {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 50px;
+            text-decoration: none;
+            color: white;
             transition: 0.3s;
         }
 
@@ -150,15 +161,15 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 
         //When user clicks on hamburger menu icon, toggle between
         //showing and hiding menu options
-        function toggleMenu() {
+        function openMenu() {
             var menu = document.getElementById("menuOptions");
-            if(menu.style.display === "block") {
-                menu.style.display = "none";
-                menu.style.width = "0";
-            } else {
-                menu.style.display = "block";
-                menu.style.width = "250px";
-            }
+            menu.style.width = "250px";
+        }
+
+        //When user clicks "x" in corner of side menu, will close
+        function closeMenu() {
+            var menu = document.getElementById("menuOptions");
+            menu.style.width = "0";
         }
 
     </script>
@@ -170,16 +181,17 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         <img id="leftArrow" src="images/left_arrow.png" alt="Back to Home Page">
     </a>
     <!-- Hamburger menu icon -->
-    <a href="javascript:void(0);" onclick="toggleMenu()">&times;
+    <a href="javascript:void(0)" onclick="openMenu()">
         <img id="hamburgIcon" src="images/hamburger_icon.png" alt="Menu">
     </a>
 </div> <!-- bar on top of screen -->
 <!-- Menu options (hidden by default) -->
 <div id="menuOptions" class="sideNav">
-    <a href="">Progress</a>
-    <a href="">Tree ID</a>
-    <a href="">Settings</a>
-    <a href="">Help</a>
+    <a href="javascript:void(0)" class="closeButton" onclick="closeMenu()">&times;</a>
+    <a href="" class="menuButton">Progress</a>
+    <a href="" class="menuButton">Tree ID</a>
+    <a href="" class="menuButton">Settings</a>
+    <a href="" class="menuButton">Help</a>
 </div>
 <div id="viewDiv"></div> <!-- map -->
 <div id="bottomBar"></div> <!-- bar on bottom of screen -->
