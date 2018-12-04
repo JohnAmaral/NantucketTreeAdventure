@@ -46,19 +46,31 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             float: right;
         }
 
-        /* Menu options (set invisible by default */
-        .topBar #menuOptions {
-            display: none;
+        /* Menu options on side */
+        .sideNav {
+            height: 100%;
+            width: 0; /* default */
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: black;
+            overflow-x: hidden; /* no horizontal scrolling */
+            padding-top: 30px;
+            transition: 0.5s; /* 0.5 sec transition to slide */
+            opacity: 0.7;
         }
 
-        /* For each link in top bar */
-        /*.topBar a {
+        /* For each link in side bar */
+        .sideNav a {
             color: white;
-            padding: 14px 16px;
+            padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 17px;
             display: block;
-        }*/
+            transition: 0.3s;
+        }
+
     </style>
     <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css"> <!-- stylesheet for ArcGIS map -->
     <script src="https://js.arcgis.com/4.9/"></script> <!-- script for ArcGIS map -->
@@ -139,12 +151,14 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 
         //When user clicks on hamburger menu icon, toggle between
         //showing and hiding menu options
-        function openMenu() {
+        function toggleMenu() {
             var menu = document.getElementById("menuOptions");
             if(menu.style.display === "block") {
                 menu.style.display = "none";
+                menu.style.width = "0";
             } else {
                 menu.style.display = "block";
+                menu.style.width = "250px";
             }
         }
 
@@ -153,21 +167,21 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 
 <body>
 <div class="topBar">
-    <a href="index.html" class="active">
+    <a href="index.html">
         <img id="leftArrow" src="images/left_arrow.png" alt="Back to Home Page">
     </a>
-    <!-- Menu options (hidden by default) -->
-    <div id="menuOptions">
-        <a href="">Progress</a>
-        <a href="">Tree ID</a>
-        <a href="">Settings</a>
-        <a href="">Help</a>
-    </div>
     <!-- Hamburger menu icon -->
-    <a href="javascript:void(0);" onclick="openMenu()">
+    <a href="javascript:void(0);" onclick="toggleMenu()">&times;
         <img id="hamburgIcon" src="images/hamburger_icon.png" alt="Menu">
     </a>
 </div> <!-- bar on top of screen -->
+<!-- Menu options (hidden by default) -->
+<div id="menuOptions" class="sideNav">
+    <a href="">Progress</a>
+    <a href="">Tree ID</a>
+    <a href="">Settings</a>
+    <a href="">Help</a>
+</div>
 <div id="viewDiv"></div> <!-- map -->
 <div id="bottomBar"></div> <!-- bar on bottom of screen -->
 </body>
