@@ -84,7 +84,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 
         /* Tree guide who shows up to give clues */
         #treeGuide {
-            height: 100%;
+            height: auto;
             width: 0; /* default */
             position: fixed;
             z-index: 1;
@@ -224,35 +224,32 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         //When user clicks on hamburger menu icon, toggle between
         //showing and hiding menu options
         function openMenu() {
+            for(var i = 0; i < 32; i++) {
+                document.getElementsByTagName("div")[i].style.opacity = "0.5";
+            }
+
             var menu = document.getElementById("menuOptions");
             menu.style.width = "250px";
-
-            var topBar = document.getElementsByTagName("div")[0];
-            topBar.style.opacity = "0.5";
-
-            var map = document.getElementsByTagName("div")[3];
-            map.style.opacity = "0.5";
-
-            var pointsBar = document.getElementsByTagName("div")[4];
-            pointsBar.style.opacity = "0.5";
-
-            var bottomBar = document.getElementsByTagName("div")[15];
-            bottomBar.style.opacity = "0.5";
         }
 
         //When user clicks "x" in corner of side menu, will close
         function closeMenu() {
+            for(var i = 0; i < 32; i++) {
+                document.getElementsByTagName("div")[i].style.opacity = "1";
+            }
+
             var menu = document.getElementById("menuOptions");
             menu.style.width = "0";
-
-            var background = document.getElementsByTagName("div");
-            background.style.opacity = "1";
         }
 
         //When user clicks tree button on bottom bar, tree guide will appear
         function openTree() {
+            for(var i = 0; i < 32; i++) {
+                document.getElementsByTagName("div")[i].style.opacity = "0.5";
+            }
+
             var treeFriend = document.getElementById("treeGuide");
-            treeFriend.style.width = "30%";
+            treeFriend.style.width = "60%";
         }
 
         //If scavenger hunt button clicked, show buttons, otherwise hide
@@ -273,17 +270,6 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         <img id="hamburgIcon" src="images/hamburger_icon.png" alt="Menu">
     </a>
 </div> <!-- bar on top of screen -->
-<!-- Menu options (hidden by default) -->
-<div id="menuOptions" class="sideNav">
-    <a href="javascript:void(0)" class="closeButton" onclick="closeMenu()">&times;</a>
-    <a href="" class="menuButton">Progress</a>
-    <a href="tree_id_page.html" class="menuButton">Tree ID</a>
-    <a href="" class="menuButton">Settings</a>
-    <a href="" class="menuButton">Help</a>
-</div>
-<div id="treeGuide">
-    <img src="images/tree_friend.png">
-</div>
 <div id="viewDiv"></div> <!-- map -->
 <!-- Points bar underneath map -->
 <div class="pointsBar">
@@ -303,6 +289,18 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
     <img id="answerIcon" src="images/answer_icon.png" alt="Answer Icon">
     <img id="learnIcon" src="images/learn_icon.png" alt="Learn Icon">
 </div> <!-- bar on bottom of screen -->
+<!-- Menu options (hidden by default) -->
+<div id="menuOptions" class="sideNav">
+    <a href="javascript:void(0)" class="closeButton" onclick="closeMenu()">&times;</a>
+    <a href="" class="menuButton">Progress</a>
+    <a href="tree_id_page.html" class="menuButton">Tree ID</a>
+    <a href="" class="menuButton">Settings</a>
+    <a href="" class="menuButton">Help</a>
+</div>
+<!-- The friendly tree guide for the scavenger hunt -->
+<div id="treeGuide">
+    <img src="images/tree_friend.png">
+</div>
 </body>
 
 </html>
