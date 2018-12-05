@@ -146,6 +146,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
     </style>
     <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css"> <!-- stylesheet for ArcGIS map -->
     <script src="https://js.arcgis.com/4.9/"></script> <!-- script for ArcGIS map -->
+    <link rel="import" href="tree_data.htm">
 
     <script>
         require([
@@ -256,6 +257,9 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         /*function toggleBottomButtons() {
             document.getElementById()
         }*/
+
+        // Access tree data
+        var treeData = document.querySelector('link[rel="import"]').import;
 
     </script>
 </head>
