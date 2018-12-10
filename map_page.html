@@ -143,6 +143,18 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             display: inline-block;
         }
 
+        /* Number pad that displays when tapping answer icon */
+        #numPad {
+            height: 0; /* default */
+            width: 50%;
+            position: fixed;
+            bottom: 0;
+            left: 25%;
+            background-color: lightgreen;
+            overflow-y: hidden; /* no horizontal scrolling */
+            transition: 0.5s; /* 0.5 sec transition to slide */
+        }
+
     </style>
     <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css"> <!-- stylesheet for ArcGIS map -->
     <script src="https://js.arcgis.com/4.9/"></script> <!-- script for ArcGIS map -->
@@ -306,6 +318,26 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             treeFriend.style.width = "0";
         }
 
+        // When user taps on answer icon, menu with numbers will display for entering 3-digit code
+        function openNumPad() {
+            for(var i = 0; i < 35; i++) {
+                document.getElementsByTagName("div")[i].style.opacity = "0.5";
+            }
+
+            var numPad = document.getElementById("numPad");
+            numPad.style.height = "30%";
+        }
+
+        // When user taps on close button or enters number, close number pad
+        function closeNumPad() {
+            for(var i = 0; i < 35; i++) {
+                document.getElementsByTagName("div")[i].style.opacity = "1";
+            }
+
+            var numPad = document.getElementById("numPad");
+            numPad.style.height = "0";
+        }
+
         //If scavenger hunt button clicked, show buttons, otherwise hide
         /*function toggleBottomButtons() {
             document.getElementById()
@@ -340,8 +372,8 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 </div>
 <div class="bottomBar">
     <img id="questIcon" src="images/quest_icon.png" alt="Quest Icon" onclick="openTree()">
-    <img id="answerIcon" src="images/answer_icon.png" alt="Answer Icon">
-    <img id="learnIcon" src="images/learn_icon.png" alt="Learn Icon">
+    <img id="answerIcon" src="images/answer_icon.png" alt="Answer Icon" onclick="openNumPad()">
+    <img id="learnIcon" src="images/learn_icon.png" alt="Learn Icon" onclick="openTree()">
 </div> <!-- bar on bottom of screen -->
 <!-- Menu options (hidden by default) -->
 <div id="menuOptions" class="sideNav">
@@ -354,6 +386,30 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 <!-- The friendly tree guide for the scavenger hunt -->
 <div id="treeGuide">
     <img src="images/tree_friend.png" onclick="closeTree()">
+</div>
+<!-- Number pad for entering 3-digit code for tree -->
+<div id="numPad">
+    <a href="javascript:void(0)" class="closeButton" onclick="closeNumPad()">x</a>
+    <table id="numTable">
+        <tr>
+            <td class="number">1</td>
+            <td class="number">2</td>
+            <td class="number">3</td>
+        </tr>
+        <tr>
+            <td class="number">4</td>
+            <td class="number">5</td>
+            <td class="number">6</td>
+        </tr>
+        <tr>
+            <td class="number">7</td>
+            <td class="number">8</td>
+            <td class="number">9</td>
+        </tr>
+        <tr>
+            <td class="number">0</td>
+        </tr>
+    </table>
 </div>
 </body>
 
