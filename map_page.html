@@ -149,12 +149,19 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
     <link rel="import" href="tree_data.htm">
 
     <script>
+
+        // Access tree data
+        var treeData = document.querySelector('link[rel="import"]').import;
+
         require([
             "esri/widgets/Track",
             "esri/views/MapView",
-            "esri/Map"
+            "esri/Map",
+            "esri/Graphic",
+            "esri/geometry/Point",
+            "esri/symbols/SimpleMarkerSymbol",
         ], function(
-            Track, MapView, Map
+            Track, MapView, Map, Graphic, Point, SimpleMarkerSymbol // add to map
         ) {
 
             var map = new Map({ // map widget with street base map
@@ -163,12 +170,14 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 
             var view = new MapView({ // view for map
                 map: map,
-                container: "viewDiv"
+                container: "viewDiv",
             });
 
-            view.when(disableZooming);
+            // Disable zooming feature on map
 
-            function disableZooming(view) {
+            //view.when(disableZooming);
+
+            /*function disableZooming(view) {
                 view.popup.dockEnabled = true;
 
                 // Remove zooming feature from popup
@@ -209,7 +218,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
                 });
 
                 return view;
-            }
+            }*/
 
             // Create an instance of the Track widget, but hide for user view (no need to stop tracking)
             var track = new Track({
@@ -220,12 +229,46 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             view.when(function() {
                 track.start();
             });
+
+            // Create points on map
+            /*for(var i = 1; i < 147; i++) {
+                // Select row of table
+                var tableRow = treeData.getElementsByTagName("tr")[i];
+
+                // Get northing and easting
+                var northing = (tableRow.getElementsByTagName("td")[0]).toString();
+                var easting = (tableRow.getElementsByTagName("td")[1]).toString();
+
+                // Create point for that tree with Northing (long) and Easting (lat)
+                var point = new Point({
+                    longitude:
+                    latitude:
+                })
+
+                // Create symbol for drawing point
+                var markerSymbol = new SimpleMarkerSymbol({
+                    color: [0, 128, 0],
+                    outline: {
+                        color: [255, 255, 255],
+                        width: 1
+                    }
+                });
+
+                // Create graphic and add geometry and symbol to it
+                var pointGraphic = new Graphic({
+                    geometry: point,
+                    symbol: markerSymbol
+                });
+
+                // Add graphic to view
+                view.graphics.add(pointGraphic);
+            }*/
         });
 
         //When user clicks on hamburger menu icon, toggle between
         //showing and hiding menu options
         function openMenu() {
-            for(var i = 0; i < 32; i++) {
+            for(var i = 0; i < 35; i++) {
                 document.getElementsByTagName("div")[i].style.opacity = "0.5";
             }
 
@@ -235,7 +278,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 
         //When user clicks "x" in corner of side menu, will close
         function closeMenu() {
-            for(var i = 0; i < 32; i++) {
+            for(var i = 0; i < 35; i++) {
                 document.getElementsByTagName("div")[i].style.opacity = "1";
             }
 
@@ -245,7 +288,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 
         //When user clicks tree button on bottom bar, tree guide will appear
         function openTree() {
-            for(var i = 0; i < 32; i++) {
+            for(var i = 0; i < 35; i++) {
                 document.getElementsByTagName("div")[i].style.opacity = "0.5";
             }
 
@@ -253,13 +296,20 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             treeFriend.style.width = "100%";
         }
 
+        // When user taps on tree when already open, close tree
+        function closeTree() {
+            for(var i = 0; i < 35; i++) {
+                document.getElementsByTagName("div")[i].style.opacity = "1";
+            }
+
+            var treeFriend = document.getElementById("treeGuide");
+            treeFriend.style.width = "0";
+        }
+
         //If scavenger hunt button clicked, show buttons, otherwise hide
         /*function toggleBottomButtons() {
             document.getElementById()
         }*/
-
-        // Access tree data
-        var treeData = document.querySelector('link[rel="import"]').import;
 
     </script>
 </head>
@@ -303,7 +353,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
 </div>
 <!-- The friendly tree guide for the scavenger hunt -->
 <div id="treeGuide">
-    <img src="images/tree_friend.png">
+    <img src="images/tree_friend.png" onclick="closeTree()">
 </div>
 </body>
 
