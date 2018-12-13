@@ -146,14 +146,42 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
         /* Number pad that displays when tapping answer icon */
         #numPad {
             height: 0; /* default */
-            width: 50%;
+            width: 75%;
             position: fixed;
             bottom: 0;
-            left: 25%;
+            left: 13%;
             background-color: lightgreen;
             overflow-y: hidden; /* no horizontal scrolling */
             transition: 0.5s; /* 0.5 sec transition to slide */
+            align-content: center;
         }
+
+        /* Close button for number pad */
+        #numPad .closeButton {
+            position: absolute;
+            top: 0;
+            right: 2%;
+            font-size: 30px;
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Table in number bad */
+        #numTable {
+            width: 90%;
+            height: 90%
+        }
+
+        /* Numbers in number pad */
+        .number {
+            padding: 2%;
+            border: 1px solid black;
+            text-align: center;
+            border-spacing: 5px;
+            background-color: white;
+            font-size: 30px
+        }
+
 
     </style>
     <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css"> <!-- stylesheet for ArcGIS map -->
@@ -325,7 +353,7 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             }
 
             var numPad = document.getElementById("numPad");
-            numPad.style.height = "30%";
+            numPad.style.height = "50%";
         }
 
         // When user taps on close button or enters number, close number pad
@@ -407,7 +435,9 @@ NOTE: this code is based on the ArcGIS DevLabs location tracking API which can b
             <td class="number">9</td>
         </tr>
         <tr>
+            <td></td>
             <td class="number">0</td>
+            <td></td>
         </tr>
     </table>
 </div>
